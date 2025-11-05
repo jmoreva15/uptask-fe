@@ -1,9 +1,13 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 import GuestGuard from '@/guards/GuestGuard';
 import AuthLayout from '@/layouts/AuthLayout';
 import SignInPage from '@/pages/auth/SignInPage';
 
 const router = createBrowserRouter([
+  {
+    element: <Navigate to="auth/sign-in" replace />,
+    index: true,
+  },
   {
     element: <GuestGuard />,
     children: [
