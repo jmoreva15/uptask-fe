@@ -7,9 +7,7 @@ const SignInPage = () => {
         <h1 className="text-4xl sm:text-5xl font-black text-white">Iniciar Sesión</h1>
         <p className="text-lg sm:text-2xl font-light text-white leading-relaxed max-w-md">
           Comienza a planear tus proyectos&nbsp;
-          <span className="text-fuchsia-500 font-semibold">
-            iniciando sesión en este formulario
-          </span>
+          <span className="text-primary font-semibold">iniciando sesión en este formulario</span>
         </p>
       </div>
 
@@ -25,7 +23,7 @@ const SignInPage = () => {
             id="email"
             type="email"
             placeholder="Ingresa tu email de registro"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -36,7 +34,7 @@ const SignInPage = () => {
             id="password"
             type="password"
             placeholder="Ingresa tu contraseña"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 

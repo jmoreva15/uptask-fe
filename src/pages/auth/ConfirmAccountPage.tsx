@@ -7,7 +7,7 @@ const ConfirmAccountPage = () => {
         <h1 className="text-4xl sm:text-5xl font-black text-white">Cuenta Confirmada</h1>
         <p className="text-lg sm:text-2xl font-light text-white leading-relaxed max-w-md">
           Tu cuenta ha sido confirmada.&nbsp;
-          <span className="text-fuchsia-500 font-semibold">Ahora puedes iniciar sesión.</span>
+          <span className="text-primary font-semibold">Ahora puedes iniciar sesión.</span>
         </p>
       </div>
 

@@ -7,7 +7,7 @@ const ForgotPasswordPage = () => {
         <h1 className="text-4xl sm:text-5xl font-black text-white">Reestablecer Password</h1>
         <p className="text-lg sm:text-2xl font-light text-white leading-relaxed max-w-md">
           ¿Olvidaste tu contraseña? Coloca tu email&nbsp;
-          <span className="text-fuchsia-500 font-semibold">y reestablece tu acceso</span>
+          <span className="text-primary font-semibold">y reestablece tu acceso</span>
         </p>
       </div>
 
@@ -23,7 +23,7 @@ const ForgotPasswordPage = () => {
             id="email"
             type="email"
             placeholder="Ingresa tu email de registro"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 

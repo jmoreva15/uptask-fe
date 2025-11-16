@@ -7,7 +7,7 @@ const SignUpPage = () => {
         <h1 className="text-4xl sm:text-5xl font-black text-white">Crear Cuenta</h1>
         <p className="text-lg sm:text-2xl font-light text-white leading-relaxed max-w-md">
           Llena el formulario para&nbsp;
-          <span className="text-fuchsia-500 font-semibold">crear tu cuenta</span>
+          <span className="text-primary font-semibold">crear tu cuenta</span>
         </p>
       </div>
 
@@ -23,7 +23,7 @@ const SignUpPage = () => {
             id="email"
             type="email"
             placeholder="Ingresa tu email"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 
@@ -35,7 +35,7 @@ const SignUpPage = () => {
             id="nombre"
             type="text"
             placeholder="Ingresa tu nombre completo"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 
@@ -47,7 +47,7 @@ const SignUpPage = () => {
             id="password"
             type="password"
             placeholder="Crea una contraseña"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 
@@ -62,7 +62,7 @@ const SignUpPage = () => {
             id="password_confirmation"
             type="password"
             placeholder="Repite tu contraseña"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 

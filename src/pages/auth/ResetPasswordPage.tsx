@@ -7,7 +7,7 @@ const ResetPasswordPage = () => {
         <h1 className="text-4xl sm:text-5xl font-black text-white">Reestablecer Contraseña</h1>
         <p className="text-lg sm:text-2xl font-light text-white leading-relaxed max-w-md">
           Ingresa tu nueva contraseña&nbsp;
-          <span className="text-fuchsia-500 font-semibold">para acceder nuevamente</span>
+          <span className="text-primary font-semibold">para acceder nuevamente</span>
         </p>
       </div>
 
@@ -23,7 +23,7 @@ const ResetPasswordPage = () => {
             id="password"
             type="password"
             placeholder="Crea una nueva contraseña"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 
@@ -38,7 +38,7 @@ const ResetPasswordPage = () => {
             id="password_confirmation"
             type="password"
             placeholder="Repite tu nueva contraseña"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 

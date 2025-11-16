@@ -8,7 +8,7 @@ const VerifyOtpPage = () => {
         <h1 className="text-4xl sm:text-5xl font-black text-white">Verificar Código</h1>
         <p className="text-lg sm:text-2xl font-light text-white leading-relaxed max-w-md">
           Ingresa el código que enviamos a tu correo&nbsp;
-          <span className="text-fuchsia-500 font-semibold">para continuar</span>
+          <span className="text-primary font-semibold">para continuar</span>
         </p>
       </div>
 
@@ -31,11 +31,7 @@ const VerifyOtpPage = () => {
                 <div
                   key={idx}
                   className={`w-10 sm:w-12 h-12 sm:h-14 flex items-center justify-center rounded-lg border text-xl sm:text-2xl font-semibold transition-all bg-gray-50 text-gray-800 
-                    ${
-                      slot.isActive
-                        ? 'border-fuchsia-500 ring-1 ring-fuchsia-500'
-                        : 'border-gray-300'
-                    }`}
+                    ${slot.isActive ? 'border-primary ring-1 ring-primary' : 'border-gray-300'}`}
                 >
                   {slot.char !== null ? slot.char : <span className="text-gray-400">•</span>}
                 </div>

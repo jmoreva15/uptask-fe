@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 import GuestGuard from '@/guards/GuestGuard';
 import AuthLayout from '@/layouts/AuthLayout';
 import SignInPage from '@/pages/auth/SignInPage';
@@ -10,7 +10,7 @@ import ConfirmAccountPage from '@/pages/auth/ConfirmAccountPage';
 
 const router = createBrowserRouter([
   {
-    element: <Navigate to="auth/sign-in" replace />,
+    element: <Navigate to="auth/verify-otp" replace />,
     index: true,
   },
   {
@@ -24,9 +24,9 @@ const router = createBrowserRouter([
             children: [
               { path: 'sign-in', element: <SignInPage /> },
               { path: 'sign-up', element: <SignUpPage /> },
-              { path: 'forgot-password', element: <ForgotPasswordPage /> },
               { path: 'verify-otp', element: <VerifyOtpPage /> },
               { path: 'reset-password', element: <ResetPasswordPage /> },
+              { path: 'forgot-password', element: <ForgotPasswordPage /> },
               { path: 'confirm-account', element: <ConfirmAccountPage /> },
             ],
           },
@@ -36,4 +36,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default router;
+const AppRouter = () => <RouterProvider router={router} />;
+
+export default AppRouter;
