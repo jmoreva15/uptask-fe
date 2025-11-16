@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from '@/components/ui/link';
 
 const ConfirmAccountPage = () => {
   return (
@@ -17,26 +17,20 @@ const ConfirmAccountPage = () => {
         </p>
         <Link
           to="/auth/sign-in"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-bold text-lg rounded-lg transition-all duration-200 cursor-pointer text-center"
+          className="bg-fuchsia-600 hover:bg-fuchsia-700 hover:text-white w-full p-3 text-white font-bold text-lg rounded-lg cursor-pointer text-center"
         >
           Ir al Login
         </Link>
       </div>
 
-      <nav className="flex flex-col items-center gap-2 text-center text-sm sm:text-base">
-        <Link
-          to="/auth/sign-up"
-          className="text-gray-300 hover:text-fuchsia-400 transition-colors duration-200"
-        >
+      <div className="flex flex-col items-center gap-2">
+        <Link to="/auth/sign-up">
           ¿Aún no tienes cuenta? <span className="font-semibold">Crear una</span>
         </Link>
-        <Link
-          to="/auth/forgot-password"
-          className="text-gray-300 hover:text-fuchsia-400 transition-colors duration-200"
-        >
+        <Link to="/auth/forgot-password">
           ¿Olvidaste tu contraseña? <span className="font-semibold">Reestablecer</span>
         </Link>
-      </nav>
+      </div>
     </div>
   );
 };

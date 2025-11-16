@@ -17,10 +17,10 @@ const router = createBrowserRouter([
     element: <GuestGuard />,
     children: [
       {
+        path: 'auth',
         element: <AuthLayout />,
         children: [
           {
-            path: 'auth',
             children: [
               { path: 'sign-in', element: <SignInPage /> },
               { path: 'sign-up', element: <SignUpPage /> },

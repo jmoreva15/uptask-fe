@@ -1,6 +1,36 @@
-import { Link } from 'react-router';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Link } from '@/components/ui/link';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const forgotPasswordSchema = z.object({
+  email: z.string().email('Debe ser un correo válido').min(1, 'El email es obligatorio'),
+});
+
+type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
 
 const ForgotPasswordPage = () => {
+  const form = useForm<ForgotPasswordValues>({
+    resolver: zodResolver(forgotPasswordSchema),
+    defaultValues: {
+      email: '',
+    },
+  });
+
+  const onSubmit = (values: ForgotPasswordValues) => {
+    console.log('Datos enviados:', values);
+  };
+
   return (
     <div className="w-full flex flex-col items-center gap-8 px-4 sm:px-6">
       <div className="flex flex-col items-center gap-3 text-center">
@@ -11,40 +41,32 @@ const ForgotPasswordPage = () => {
         </p>
       </div>
 
-      <form
+      <Form
+        form={form}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-6 w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8"
-        noValidate
       >
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="font-medium text-base sm:text-lg text-gray-700">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Ingresa tu email de registro"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-        </div>
-
-        <input
-          type="submit"
-          value="Enviar Instrucciones"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-bold text-lg rounded-lg transition-all duration-200 cursor-pointer"
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="Ingresa tu email de registro" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </form>
+        <Button type="submit">Enviar Instrucciones</Button>
+      </Form>
 
       <nav className="flex flex-col items-center gap-2 text-center text-sm sm:text-base">
-        <Link
-          to="/auth/sign-in"
-          className="text-gray-300 hover:text-fuchsia-400 transition-colors duration-200"
-        >
+        <Link to="/auth/sign-in">
           ¿Ya tienes cuenta? <span className="font-semibold">Iniciar Sesión</span>
         </Link>
-        <Link
-          to="/auth/sign-up"
-          className="text-gray-300 hover:text-fuchsia-400 transition-colors duration-200"
-        >
+        <Link to="/auth/sign-up">
           ¿No tienes cuenta? <span className="font-semibold">Crear una</span>
         </Link>
       </nav>

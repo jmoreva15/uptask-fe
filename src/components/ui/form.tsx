@@ -10,6 +10,8 @@ import {
   type FieldValues,
   type UseFormReturn,
 } from 'react-hook-form';
+import { Label } from './label';
+import { Slot } from '@radix-ui/react-slot';
 
 import { cn } from '@/lib/utils';
 
@@ -85,36 +87,21 @@ function FormItem({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function FormLabel({ className, ...props }: React.ComponentProps<'label'>) {
+function FormLabel({ ...props }: React.ComponentProps<'label'>) {
   const { formItemId, error } = useFormField();
 
-  return (
-    <label
-      htmlFor={formItemId}
-      className={cn(
-        'font-medium text-base sm:text-lg',
-        error ? 'text-red-600' : 'text-gray-700',
-        className
-      )}
-      {...props}
-    />
-  );
+  return <Label data-slot="form-label" data-error={!!error} htmlFor={formItemId} {...props} />;
 }
 
-function FormControl({ className, ...props }: React.ComponentProps<'input'>) {
+function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
   const { formItemId, formDescriptionId, formMessageId, error } = useFormField();
 
   return (
-    <input
+    <Slot
       id={formItemId}
-      aria-describedby={!error ? formDescriptionId : `${formDescriptionId} ${formMessageId}`}
+      data-slot="form-control"
+      aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
       aria-invalid={!!error}
-      className={cn(
-        'w-full p-3 border border-gray-300 rounded-lg',
-        'focus:outline-none focus:ring-2 focus:ring-primary',
-        error && 'border-red-600 focus:ring-red-600',
-        className
-      )}
       {...props}
     />
   );
@@ -123,7 +110,14 @@ function FormControl({ className, ...props }: React.ComponentProps<'input'>) {
 function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
   const { formDescriptionId } = useFormField();
 
-  return <p id={formDescriptionId} className={cn('text-sm text-gray-500', className)} {...props} />;
+  return (
+    <p
+      id={formDescriptionId}
+      data-slot="form-control"
+      className={cn('text-sm text-gray-500', className)}
+      {...props}
+    />
+  );
 }
 
 function FormMessage({ className, children, ...props }: React.ComponentProps<'p'>) {
@@ -135,6 +129,7 @@ function FormMessage({ className, children, ...props }: React.ComponentProps<'p'
   return (
     <p
       id={formMessageId}
+      data-slot="form-control"
       className={cn(
         'text-center bg-red-100 text-red-600',
         'font-bold p-3 rounded-md text-sm uppercase',
