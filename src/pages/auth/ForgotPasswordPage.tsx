@@ -62,14 +62,14 @@ const ForgotPasswordPage = () => {
         <Button type="submit">Enviar Instrucciones</Button>
       </Form>
 
-      <nav className="flex flex-col items-center gap-2 text-center text-sm sm:text-base">
+      <div className="flex flex-col items-center gap-2">
         <Link to="/auth/sign-in">
           ¿Ya tienes cuenta? <span className="font-semibold">Iniciar Sesión</span>
         </Link>
         <Link to="/auth/sign-up">
           ¿No tienes cuenta? <span className="font-semibold">Crear una</span>
         </Link>
-      </nav>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,36 @@
-import { OTPInput } from 'input-otp';
-import { Link } from 'react-router';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from '@/components/ui/form';
+import { Link } from '@/components/ui/link';
+import { InputOTP } from '@/components/ui/input-otp';
+import { Button } from '@/components/ui/button';
+
+const verifyOtpSchema = z.object({
+  otp: z.string().min(6, 'El código debe tener 6 dígitos').max(6, 'El código debe tener 6 dígitos'),
+});
+
+type VerifyOtpValues = z.infer<typeof verifyOtpSchema>;
 
 const VerifyOtpPage = () => {
+  const form = useForm<VerifyOtpValues>({
+    resolver: zodResolver(verifyOtpSchema),
+    defaultValues: {
+      otp: '',
+    },
+  });
+
+  const onSubmit = (values: VerifyOtpValues) => {
+    console.log('Código enviado:', values);
+  };
+
   return (
     <div className="w-full flex flex-col items-center gap-8 px-4 sm:px-6">
       <div className="flex flex-col items-center gap-3 text-center">
@@ -12,55 +41,36 @@ const VerifyOtpPage = () => {
         </p>
       </div>
 
-      <form
+      <Form
+        form={form}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col items-center gap-8 w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8"
-        noValidate
       >
-        <div className="flex flex-col items-center gap-4 w-full">
-          <label htmlFor="email" className="font-medium text-base sm:text-lg text-gray-700">
-            Código de Verificación
-          </label>
-        </div>
-
-        <OTPInput
-          maxLength={6}
-          containerClassName="flex justify-center gap-3 sm:gap-4"
-          render={({ slots }) => (
-            <div className="flex justify-center gap-3 sm:gap-4">
-              {slots.map((slot, idx) => (
-                <div
-                  key={idx}
-                  className={`w-10 sm:w-12 h-12 sm:h-14 flex items-center justify-center rounded-lg border text-xl sm:text-2xl font-semibold transition-all bg-gray-50 text-gray-800 
-                    ${slot.isActive ? 'border-primary ring-1 ring-primary' : 'border-gray-300'}`}
-                >
-                  {slot.char !== null ? slot.char : <span className="text-gray-400">•</span>}
-                </div>
-              ))}
-            </div>
+        <FormField
+          control={form.control}
+          name="otp"
+          render={({ field }) => (
+            <FormItem className="flex flex-col items-center gap-4 w-full">
+              <FormLabel className="text-center">Código de Verificación</FormLabel>
+              <FormControl>
+                <InputOTP {...field} maxLength={6} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
           )}
         />
 
-        <input
-          type="submit"
-          value="Verificar Código"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-bold text-lg rounded-lg transition-all duration-200 cursor-pointer"
-        />
-      </form>
+        <Button type="submit">Verificar Código</Button>
+      </Form>
 
-      <nav className="flex flex-col items-center gap-2 text-center text-sm sm:text-base">
-        <Link
-          to="/auth/sign-in"
-          className="text-gray-300 hover:text-fuchsia-400 transition-colors duration-200"
-        >
+      <div className="flex flex-col items-center gap-2">
+        <Link to="/auth/sign-in">
           ¿Ya tienes cuenta? <span className="font-semibold">Iniciar Sesión</span>
         </Link>
-        <Link
-          to="/auth/forgot-password"
-          className="text-gray-300 hover:text-fuchsia-400 transition-colors duration-200"
-        >
+        <Link to="/auth/forgot-password">
           ¿No recibiste el código? <span className="font-semibold">Reenviar</span>
         </Link>
-      </nav>
+      </div>
     </div>
   );
 };
