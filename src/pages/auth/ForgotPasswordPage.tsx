@@ -19,7 +19,7 @@ const forgotPasswordSchema = z.object({
 
 type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
 
-const ForgotPasswordPage = () => {
+function ForgotPasswordPage() {
   const form = useForm<ForgotPasswordValues>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
@@ -72,6 +72,6 @@ const ForgotPasswordPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ForgotPasswordPage;

@@ -19,7 +19,7 @@ const verifyOtpSchema = z.object({
 
 type VerifyOtpValues = z.infer<typeof verifyOtpSchema>;
 
-const VerifyOtpPage = () => {
+function VerifyOtpPage() {
   const form = useForm<VerifyOtpValues>({
     resolver: zodResolver(verifyOtpSchema),
     defaultValues: {
@@ -73,6 +73,6 @@ const VerifyOtpPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default VerifyOtpPage;

@@ -27,7 +27,7 @@ const signUpSchema = z
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
-const SignUpPage = () => {
+function SignUpPage() {
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -122,6 +122,6 @@ const SignUpPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SignUpPage;

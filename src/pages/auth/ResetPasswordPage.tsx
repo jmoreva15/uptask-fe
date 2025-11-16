@@ -1,5 +1,5 @@
-import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
@@ -25,7 +25,7 @@ const resetPasswordSchema = z
 
 type ResetPasswordValues = z.infer<typeof resetPasswordSchema>;
 
-const ResetPasswordPage = () => {
+function ResetPasswordPage() {
   const form = useForm<ResetPasswordValues>({
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
@@ -92,6 +92,6 @@ const ResetPasswordPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ResetPasswordPage;

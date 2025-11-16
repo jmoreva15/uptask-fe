@@ -23,7 +23,7 @@ const signInSchema = z.object({
 
 type SignInValues = z.infer<typeof signInSchema>;
 
-const SignInPage = () => {
+function SignInPage() {
   const form = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -90,6 +90,6 @@ const SignInPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SignInPage;

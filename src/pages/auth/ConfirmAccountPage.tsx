@@ -1,6 +1,6 @@
 import { Link } from '@/components/ui/link';
 
-const ConfirmAccountPage = () => {
+function ConfirmAccountPage() {
   return (
     <div className="w-full flex flex-col items-center gap-8 px-4 sm:px-6 text-center">
       <div className="flex flex-col items-center gap-4">
@@ -33,6 +33,6 @@ const ConfirmAccountPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ConfirmAccountPage;

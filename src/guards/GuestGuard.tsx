@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 
-const GuestGuard = () => {
+function GuestGuard() {
   return <Outlet />;
-};
+}
 
 export default GuestGuard;
